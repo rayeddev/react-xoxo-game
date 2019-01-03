@@ -1,0 +1,14 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.tapSquare {
+  display: flex;
+  flex-flow: row;
+  width: 92px;
+  height: 92px;
+  border: 1px solid;
+  align-items: center;
+  margin: 2px;
+}
