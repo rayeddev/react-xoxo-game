@@ -106,12 +106,13 @@ export class App extends Component {
         </div>
 
         <h3 align="left">2) Manual Switch between two players (modes)</h3>
-
+        <span>Soon ... </span>
         <h3 align="left">3) Auto Switch between two players (modes)</h3>
-
+        <span>Soon ... </span>
         <h3 align="left">4) Detect the winner and the game over status</h3>
-
+        <span>Soon ... </span>
         <h3 align="left">5) Make player round timeout </h3>
+        <span>Soon ... </span>
       </div>
     );
   }
