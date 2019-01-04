@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import TapSquare from "./TapSquare";
+import PlaygroundStep from "./playground-step";
 
 import "./styles.css";
 
@@ -63,7 +64,7 @@ export class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>React sample of simple XOXO game</h1>
+        <h1>React Example of simple XOXO game</h1>
 
         <h2 align="left">Explaining Game Logic</h2>
         <ul align="left">
@@ -101,25 +102,7 @@ export class App extends Component {
           2) Generate playground array of tabSquare Components
         </h3>
 
-        <div
-          style={{
-            display: "flex",
-            flexFlow: "row",
-            flexWrap: "wrap",
-            maxWidth: 92 * 3 + 3 * 6
-          }}
-        >
-          {this.state.squares.map((square, i) => {
-            return (
-              <TapSquare
-                key={square.key}
-                mode="x"
-                onTapped={() => this.squateBooked(square.key)}
-                booked={square.booked}
-              />
-            );
-          })}
-        </div>
+        <PlaygroundStep />
 
         <h3 align="left">2) Manual Switch between two players (modes)</h3>
 
