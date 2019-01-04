@@ -44,26 +44,50 @@ export default class PlaygroundStep extends Component {
     });
   }
 
+  reset() {
+    this.setState(prv => {
+      return {
+        ...prv,
+        squares: prv.squares.map((square, i) => {
+          square.booked = false;
+
+          return square;
+        })
+      };
+    });
+  }
+
   render() {
     return (
-      <div
-        style={{
-          display: "flex",
-          flexFlow: "row",
-          flexWrap: "wrap",
-          maxWidth: 92 * 3 + 3 * 6
-        }}
-      >
-        {this.state.squares.map((square, i) => {
-          return (
-            <TapSquare
-              key={square.key}
-              mode="x"
-              onTapped={() => this.squateBooked(square.key)}
-              booked={square.booked}
-            />
-          );
-        })}
+      <div align="left">
+        <button
+          style={{ fontSize: 14 }}
+          onClick={() => {
+            this.reset();
+          }}
+        >
+          Reset
+        </button>
+        <div
+          style={{
+            display: "flex",
+            flexFlow: "row",
+            flexWrap: "wrap",
+            maxWidth: 92 * 3 + 3 * 6,
+            paddingTop: 10
+          }}
+        >
+          {this.state.squares.map((square, i) => {
+            return (
+              <TapSquare
+                key={square.key}
+                mode="x"
+                onTapped={() => this.squateBooked(square.key)}
+                booked={square.booked}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   }

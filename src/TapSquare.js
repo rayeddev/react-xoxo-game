@@ -9,7 +9,9 @@ export default class TapSquare extends Component {
     return (
       <div className="tapSquare" onClick={this.props.onTapped}>
         {this.props.booked && (
-          <h1 style={{ flex: 100, fontStyle: "italic" }}>{this.props.mode}</h1>
+          <h1 style={{ flex: 100, fontStyle: "italic", textAlign: "center" }}>
+            {this.props.mode}
+          </h1>
         )}
       </div>
     );
