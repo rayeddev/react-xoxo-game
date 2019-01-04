@@ -9,20 +9,31 @@ export class App extends Component {
     super();
 
     this.squateBooked = this.squateBooked.bind(this);
+    this.handelManualChange = this.handelManualChange.bind(this);
 
     this.state = {
       squares: [
-        { key: "tap_1", mode: "none", booked: false },
-        { key: "tap_2", mode: "none", booked: false },
-        { key: "tap_3", mode: "none", booked: false },
-        { key: "tap_4", mode: "none", booked: false },
-        { key: "tap_5", mode: "none", booked: false },
-        { key: "tap_6", mode: "none", booked: false },
-        { key: "tap_7", mode: "none", booked: false },
-        { key: "tap_8", mode: "none", booked: false },
-        { key: "tap_9", mode: "none", booked: false }
+        { key: "tap_1", mode: "none", booked: false, xy: [0, 0] },
+        { key: "tap_2", mode: "none", booked: false, xy: [1, 0] },
+        { key: "tap_3", mode: "none", booked: false, xy: [2, 0] },
+        { key: "tap_4", mode: "none", booked: false, xy: [0, 1] },
+        { key: "tap_5", mode: "none", booked: false, xy: [1, 1] },
+        { key: "tap_6", mode: "none", booked: false, xy: [2, 1] },
+        { key: "tap_7", mode: "none", booked: false, xy: [0, 2] },
+        { key: "tap_8", mode: "none", booked: false, xy: [1, 2] },
+        { key: "tap_9", mode: "none", booked: false, xy: [2, 2] }
       ],
 
+      playerA: {
+        squaresX: "",
+        squaresY: ""
+      },
+      playerB: {
+        squaresX: "",
+        squaresY: ""
+      },
+
+      activePlayer: "A",
       singleExmaple: {
         booked: false
       }
@@ -36,12 +47,17 @@ export class App extends Component {
         squares: prv.squares.map((square, i) => {
           if (square.key === key) {
             square.booked = true;
+            square.mode = this.state.activePlayer === "A" ? "X" : "O";
           }
 
           return square;
         })
       };
     });
+  }
+
+  handelManualChange(e) {
+    this.setState({ activePlayer: e.target.value });
   }
 
   render() {
@@ -106,7 +122,57 @@ export class App extends Component {
         </div>
 
         <h3 align="left">2) Manual Switch between two players (modes)</h3>
-        <span>Soon ... </span>
+
+        <div align="left">
+          <span>
+            <input
+              type="radio"
+              value="A"
+              onChange={this.handelManualChange}
+              checked={this.state.activePlayer === "A"}
+            />
+            Player A
+          </span>
+          <span style={{ marginLeft: "40px" }}>
+            <input
+              type="radio"
+              value="B"
+              onChange={this.handelManualChange}
+              checked={this.state.activePlayer === "B"}
+            />
+            Player B
+          </span>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            flexFlow: "row",
+            flexWrap: "wrap",
+            maxWidth: 92 * 3 + 3 * 6,
+            marginTop: "10px"
+          }}
+        >
+          {this.state.squares.map((square, i) => {
+            return (
+              <TapSquare
+                key={square.key}
+                mode={
+                  square.booked
+                    ? square.mode
+                    : this.state.activePlayer === "A"
+                    ? "X"
+                    : "O"
+                }
+                onTapped={
+                  square.booked ? null : () => this.squateBooked(square.key)
+                }
+                booked={square.booked}
+              />
+            );
+          })}
+        </div>
+
         <h3 align="left">3) Auto Switch between two players (modes)</h3>
         <span>Soon ... </span>
         <h3 align="left">4) Detect the winner and the game over status</h3>
