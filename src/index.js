@@ -68,7 +68,7 @@ export class App extends Component {
         <h2 align="left">Explaining Game Logic</h2>
         <ul align="left">
           <li>Two Players</li>
-          <li>Rondamly picking starting player</li>
+          <li>Randomly picking starting player</li>
           <li>Player A (X) mode</li>
           <li>Player B (O) mode</li>
           <li>
