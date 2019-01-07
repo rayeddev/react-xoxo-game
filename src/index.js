@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import TapSquare from "./TapSquare";
 import PlaygroundStep from "./playground-step";
-
+import ManuelPlayersStep from "./manuelplayers-step";
+import AutoSwitchStep from "./autoSwitch-step";
 import "./styles.css";
 
 export class App extends Component {
@@ -105,59 +106,10 @@ export class App extends Component {
         <PlaygroundStep />
 
         <h3 align="left">2) Manual Switch between two players (modes)</h3>
-
-        <div align="left">
-          <span>
-            <input
-              type="radio"
-              value="A"
-              onChange={this.handelManualChange}
-              checked={this.state.activePlayer === "A"}
-            />
-            Player A
-          </span>
-          <span style={{ marginLeft: "40px" }}>
-            <input
-              type="radio"
-              value="B"
-              onChange={this.handelManualChange}
-              checked={this.state.activePlayer === "B"}
-            />
-            Player B
-          </span>
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            flexFlow: "row",
-            flexWrap: "wrap",
-            maxWidth: 92 * 3 + 3 * 6,
-            marginTop: "10px"
-          }}
-        >
-          {this.state.squares.map((square, i) => {
-            return (
-              <TapSquare
-                key={square.key}
-                mode={
-                  square.booked
-                    ? square.mode
-                    : this.state.activePlayer === "A"
-                    ? "X"
-                    : "O"
-                }
-                onTapped={
-                  square.booked ? null : () => this.squateBooked(square.key)
-                }
-                booked={square.booked}
-              />
-            );
-          })}
-        </div>
+        <ManuelPlayersStep />
 
         <h3 align="left">3) Auto Switch between two players (modes)</h3>
-        <span>Soon ... </span>
+        <AutoSwitchStep />
         <h3 align="left">4) Detect the winner and the game over status</h3>
         <span>Soon ... </span>
         <h3 align="left">5) Make player round timeout </h3>
