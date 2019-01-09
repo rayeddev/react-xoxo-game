@@ -12,18 +12,19 @@ export class App extends Component {
 
     this.squateBooked = this.squateBooked.bind(this);
     this.handelManualChange = this.handelManualChange.bind(this);
+    this.squaresPerRoww = 3;
 
     this.state = {
       squares: [
-        { key: "tap_1", mode: "none", booked: false, xy: [0, 0] },
-        { key: "tap_2", mode: "none", booked: false, xy: [1, 0] },
-        { key: "tap_3", mode: "none", booked: false, xy: [2, 0] },
-        { key: "tap_4", mode: "none", booked: false, xy: [0, 1] },
-        { key: "tap_5", mode: "none", booked: false, xy: [1, 1] },
-        { key: "tap_6", mode: "none", booked: false, xy: [2, 1] },
-        { key: "tap_7", mode: "none", booked: false, xy: [0, 2] },
-        { key: "tap_8", mode: "none", booked: false, xy: [1, 2] },
-        { key: "tap_9", mode: "none", booked: false, xy: [2, 2] }
+        { key: "tap_1", mode: "none", booked: false, index: 1 },
+        { key: "tap_2", mode: "none", booked: false, index: 2 },
+        { key: "tap_3", mode: "none", booked: false, index: 3 },
+        { key: "tap_4", mode: "none", booked: false, index: 4 },
+        { key: "tap_5", mode: "none", booked: false, index: 5 },
+        { key: "tap_6", mode: "none", booked: false, index: 6 },
+        { key: "tap_7", mode: "none", booked: false, index: 7 },
+        { key: "tap_8", mode: "none", booked: false, index: 8 },
+        { key: "tap_9", mode: "none", booked: false, index: 9 }
       ],
 
       playerA: {
