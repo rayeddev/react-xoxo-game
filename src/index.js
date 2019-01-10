@@ -4,6 +4,7 @@ import TapSquare from "./TapSquare";
 import PlaygroundStep from "./playground-step";
 import ManuelPlayersStep from "./manuelplayers-step";
 import AutoSwitchStep from "./autoSwitch-step";
+import WinnerDetectStep from "./winnerDetect-step";
 import "./styles.css";
 
 export class App extends Component {
@@ -15,27 +16,6 @@ export class App extends Component {
     this.squaresPerRoww = 3;
 
     this.state = {
-      squares: [
-        { key: "tap_1", mode: "none", booked: false, index: 1 },
-        { key: "tap_2", mode: "none", booked: false, index: 2 },
-        { key: "tap_3", mode: "none", booked: false, index: 3 },
-        { key: "tap_4", mode: "none", booked: false, index: 4 },
-        { key: "tap_5", mode: "none", booked: false, index: 5 },
-        { key: "tap_6", mode: "none", booked: false, index: 6 },
-        { key: "tap_7", mode: "none", booked: false, index: 7 },
-        { key: "tap_8", mode: "none", booked: false, index: 8 },
-        { key: "tap_9", mode: "none", booked: false, index: 9 }
-      ],
-
-      playerA: {
-        squaresX: "",
-        squaresY: ""
-      },
-      playerB: {
-        squaresX: "",
-        squaresY: ""
-      },
-
       activePlayer: "A",
       singleExmaple: {
         booked: false
@@ -49,7 +29,7 @@ export class App extends Component {
         ...prv,
         squares: prv.squares.map((square, i) => {
           if (square.key === key) {
-            square.booked = true;
+            square.booked = this.state.activePlayer;
             square.mode = this.state.activePlayer === "A" ? "X" : "O";
           }
 
@@ -92,7 +72,8 @@ export class App extends Component {
             this.setState(prv => {
               return {
                 singleExmaple: {
-                  booked: !prv.singleExmaple.booked
+                  booked:
+                    prv.singleExmaple.booked === "none" ? "anyPlayer" : "none"
                 }
               };
             })
@@ -112,7 +93,7 @@ export class App extends Component {
         <h3 align="left">3) Auto Switch between two players (modes)</h3>
         <AutoSwitchStep />
         <h3 align="left">4) Detect the winner and the game over status</h3>
-        <span>Soon ... </span>
+        <WinnerDetectStep />
         <h3 align="left">5) Make player round timeout </h3>
         <span>Soon ... </span>
       </div>

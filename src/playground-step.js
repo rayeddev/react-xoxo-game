@@ -8,19 +8,19 @@ export default class PlaygroundStep extends Component {
   constructor() {
     super();
 
-    this.squateBooked = this.squateBooked.bind(this);
+    this.squareBooked = this.squareBooked.bind(this);
 
     this.state = {
       squares: [
-        { key: "tap_1", mode: "none", booked: false },
-        { key: "tap_2", mode: "none", booked: false },
-        { key: "tap_3", mode: "none", booked: false },
-        { key: "tap_4", mode: "none", booked: false },
-        { key: "tap_5", mode: "none", booked: false },
-        { key: "tap_6", mode: "none", booked: false },
-        { key: "tap_7", mode: "none", booked: false },
-        { key: "tap_8", mode: "none", booked: false },
-        { key: "tap_9", mode: "none", booked: false }
+        { index: 1, mode: "none", booked: "none" },
+        { index: 2, mode: "none", booked: "none" },
+        { index: 3, mode: "none", booked: "none" },
+        { index: 4, mode: "none", booked: "none" },
+        { index: 5, mode: "none", booked: "none" },
+        { index: 6, mode: "none", booked: "none" },
+        { index: 7, mode: "none", booked: "none" },
+        { index: 8, mode: "none", booked: "none" },
+        { index: 9, mode: "none", booked: "none" }
       ],
 
       singleExmaple: {
@@ -29,13 +29,13 @@ export default class PlaygroundStep extends Component {
     };
   }
 
-  squateBooked(key) {
+  squareBooked(index) {
     this.setState(prv => {
       return {
         ...prv,
         squares: prv.squares.map((square, i) => {
-          if (square.key === key) {
-            square.booked = true;
+          if (square.index === index) {
+            square.booked = "anyPlayer";
           }
 
           return square;
@@ -49,8 +49,7 @@ export default class PlaygroundStep extends Component {
       return {
         ...prv,
         squares: prv.squares.map((square, i) => {
-          square.booked = false;
-
+          square.booked = "none";
           return square;
         })
       };
@@ -80,9 +79,9 @@ export default class PlaygroundStep extends Component {
           {this.state.squares.map((square, i) => {
             return (
               <TapSquare
-                key={square.key}
+                key={square.index}
                 mode="x"
-                onTapped={() => this.squateBooked(square.key)}
+                onTapped={() => this.squareBooked(square.index)}
                 booked={square.booked}
               />
             );

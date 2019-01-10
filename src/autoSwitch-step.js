@@ -5,51 +5,38 @@ export default class AutoSwitchStep extends Component {
   constructor() {
     super();
 
-    this.squateBooked = this.squateBooked.bind(this);
+    this.squareBooked = this.squareBooked.bind(this);
     this.handelManualChange = this.handelManualChange.bind(this);
 
     this.squaresPerRoww = 3;
 
     this.state = {
       squares: [
-        { key: "tap_1", mode: "none", booked: false, index: 1 },
-        { key: "tap_2", mode: "none", booked: false, index: 2 },
-        { key: "tap_3", mode: "none", booked: false, index: 3 },
-        { key: "tap_4", mode: "none", booked: false, index: 4 },
-        { key: "tap_5", mode: "none", booked: false, index: 5 },
-        { key: "tap_6", mode: "none", booked: false, index: 6 },
-        { key: "tap_7", mode: "none", booked: false, index: 7 },
-        { key: "tap_8", mode: "none", booked: false, index: 8 },
-        { key: "tap_9", mode: "none", booked: false, index: 9 }
+        { index: 1, mode: "none", booked: "none" },
+        { index: 2, mode: "none", booked: "none" },
+        { index: 3, mode: "none", booked: "none" },
+        { index: 4, mode: "none", booked: "none" },
+        { index: 5, mode: "none", booked: "none" },
+        { index: 6, mode: "none", booked: "none" },
+        { index: 7, mode: "none", booked: "none" },
+        { index: 8, mode: "none", booked: "none" },
+        { index: 9, mode: "none", booked: "none" }
       ],
 
-      playerA: {
-        squaresX: "",
-        squaresY: ""
-      },
-      playerB: {
-        squaresX: "",
-        squaresY: ""
-      },
-
-      activePlayer: ["A", "B"][Math.floor(Math.random() * 2)],
-      singleExmaple: {
-        booked: false
-      }
+      activePlayer: ["A", "B"][Math.floor(Math.random() * 2)]
     };
   }
 
-  squateBooked(key) {
+  squareBooked(index) {
     this.setState(prv => {
       return {
         ...prv,
         activePlayer: prv.activePlayer === "A" ? "B" : "A",
         squares: prv.squares.map((square, i) => {
-          if (square.key === key) {
-            square.booked = true;
-            square.mode = this.state.activePlayer === "A" ? "X" : "O";
+          if (square.index === index) {
+            square.booked = prv.activePlayer;
+            square.mode = prv.activePlayer === "A" ? "X" : "O";
           }
-
           return square;
         })
       };
@@ -118,16 +105,12 @@ export default class AutoSwitchStep extends Component {
           {this.state.squares.map((square, i) => {
             return (
               <TapSquare
-                key={square.key}
-                mode={
-                  square.booked
-                    ? square.mode
-                    : this.state.activePlayer === "A"
-                    ? "X"
-                    : "O"
-                }
+                key={square.index}
+                mode={square.mode}
                 onTapped={
-                  square.booked ? null : () => this.squateBooked(square.key)
+                  square.booked !== "none"
+                    ? null
+                    : () => this.squareBooked(square.index)
                 }
                 booked={square.booked}
               />

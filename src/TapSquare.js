@@ -7,8 +7,11 @@ export default class TapSquare extends Component {
 
   render() {
     return (
-      <div className="tapSquare" onClick={this.props.onTapped}>
-        {this.props.booked && (
+      <div
+        className={"tapSquare" + (this.props.won ? " wonSquare" : "")}
+        onClick={this.props.onTapped}
+      >
+        {this.props.booked !== "none" && (
           <h1 style={{ flex: 100, fontStyle: "italic", textAlign: "center" }}>
             {this.props.mode}
           </h1>
