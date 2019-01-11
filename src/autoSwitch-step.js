@@ -49,7 +49,7 @@ export default class AutoSwitchStep extends Component {
         ...prv,
         activePlayer: ["A", "B"][Math.floor(Math.random() * 2)],
         squares: prv.squares.map((square, i) => {
-          square.booked = false;
+          square.booked = "none";
 
           return square;
         })

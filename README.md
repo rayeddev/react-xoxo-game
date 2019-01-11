@@ -1,3 +1,3 @@
 # react-xoxo-game
 
-React.js Sample of XOXO game Created with CodeSandbox
+React.js Sample of tic-tac-toe game Created with CodeSandbox

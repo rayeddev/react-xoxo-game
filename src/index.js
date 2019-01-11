@@ -94,8 +94,6 @@ export class App extends Component {
         <AutoSwitchStep />
         <h3 align="left">4) Detect the winner and the game over status</h3>
         <WinnerDetectStep />
-        <h3 align="left">5) Make player round timeout </h3>
-        <span>Soon ... </span>
       </div>
     );
   }
