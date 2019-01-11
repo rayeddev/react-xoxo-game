@@ -84,7 +84,10 @@ export default class WinnerDetectStep extends Component {
         }
       });
 
-      if (borderSquares.length > 0 && activePlayerSquares.length > 2) {
+      if (
+        borderSquares.length > 0 &&
+        activePlayerSquares.length >= this.squaresPerRow
+      ) {
         var path = [];
 
         for (var i = 0; i < borderSquares.length; i++) {
