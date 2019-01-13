@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import TapSquare from "./TapSquare";
 
 export default class WinnerDetectStep extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.squareBooked = this.squareBooked.bind(this);
     this.handelManualChange = this.handelManualChange.bind(this);
 
-    this.squaresPerRow = 3;
+    this.squaresPerRow = this.props.size;
     this.gameOn = true;
 
     this.state = {
@@ -83,7 +83,7 @@ export default class WinnerDetectStep extends Component {
           return square;
         }
       });
-
+      console.log("border squares ", borderSquares.length);
       if (
         borderSquares.length > 0 &&
         activePlayerSquares.length >= this.squaresPerRow

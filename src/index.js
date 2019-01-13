@@ -13,7 +13,6 @@ export class App extends Component {
 
     this.squateBooked = this.squateBooked.bind(this);
     this.handelManualChange = this.handelManualChange.bind(this);
-    this.squaresPerRoww = 3;
 
     this.state = {
       activePlayer: "A",
@@ -93,7 +92,7 @@ export class App extends Component {
         <h3 align="left">3) Auto Switch between two players (modes)</h3>
         <AutoSwitchStep />
         <h3 align="left">4) Detect the winner and the game over status</h3>
-        <WinnerDetectStep />
+        <WinnerDetectStep size={4} />
       </div>
     );
   }
